@@ -1,1 +1,40 @@
-<p>user-view-modal works!</p>
+<div class="modal" *ngIf="userByID">
+ <div class="modal-content">
+    <h2>Detail User</h2>
+      <form>
+         <label>ชื่อ-สกุล</label>
+      <input 
+        type="text" 
+        name="first_name_th" 
+        [(ngModel)]="userByID.first_name_th"
+        required
+      />
+         <input 
+        type="text" 
+        name="last_name_th" 
+        [(ngModel)]="userByID.last_name_th"
+        required
+      />
+       <label>วันเกิด</label>
+      <input 
+        type="date" 
+        name="birth_date" 
+        [(ngModel)]="userByID.birth_date"
+        required
+      />
+
+        <div>
+        <label>อายุ</label> 
+        {{userByID.age}} ปี
+        </div>
+        <label>ที่อยู่</label>
+      <textarea 
+        rows="3"
+        [(ngModel)]="userByID.addresses"
+        name="addresses">
+        </textarea>
+              </form>
+        <button type="button" (click)="cancel()">Cancel</button>
+
+    </div>
+</div>
