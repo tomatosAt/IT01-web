@@ -1,0 +1,39 @@
+<button (click)="openAddModal()">Add</button>
+
+<app-user-add-modal
+  *ngIf="isAddModalOpen"
+  (userCreated)="onUserCreated()"
+  (close)="closeModal()">
+</app-user-add-modal>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>ชื่อ-สกุล</th>
+      <th>ที่อยู่</th>
+      <th>วันเกิด</th>
+      <th>อายุ</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let user of users; let i = index">
+      <td>{{ (currentPage - 1) * pageSize + i + 1 }}</td>
+      <td>{{ user.first_name_th }} {{ user.last_name_th }}</td>
+      <td>{{ user.addresses }}</td>
+     <td>{{ formatDate(user.birth_date)}}</td>
+      <td>{{ user.age }}</td>
+      <td>
+        <button (click)="openViewModal(user.id)">View</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<app-user-view-modal
+  *ngIf="isViewModalOpen"
+  [userId]="selectedUserId"
+  (close)="closeModal()">
+</app-user-view-modal>
