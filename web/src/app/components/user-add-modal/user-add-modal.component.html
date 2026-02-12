@@ -1,31 +1,43 @@
 <div class="modal">
-    <div class="modal-content">
-    <form (ngSubmit)="submit()" #userForm="ngForm">
- <label>ชื่อ-สกุล</label>
-  <input [(ngModel)]="newUser.first_name_th" type="text" name="first_name_th" required>
-  <input [(ngModel)]="newUser.last_name_th" type="text" name="last_name_th" required>
-       <label>วันเกิด</label>
-  <input type="date" [(ngModel)]="newUser.birth_date" name="birth_date" required>
-  <div>
-  อายุ:
-  <ng-container *ngIf="calculateAge !== null; else emptyAge">
-    {{ calculateAge }} ปี
-  </ng-container>
+  <div class="modal-content">
+    <form class="form-grid" (ngSubmit)="submit()" #userForm="ngForm">
+      <div class="form-row">
+        <label class="field-label">ชื่อ-สกุล</label>
+        <div class="field-row">
+          <input class="input" placeholder="ชื่อ" [(ngModel)]="newUser.first_name_th" type="text" name="first_name_th" required>
+          <input class="input" placeholder="นามสกุล" [(ngModel)]="newUser.last_name_th" type="text" name="last_name_th" required>
+        </div>
+      </div>
 
-  <ng-template #emptyAge>
-    xx ปี
-  </ng-template>
-</div>
- <label>ที่อยู่</label>
-      <textarea 
-        rows="3"
-        [(ngModel)]="newUser.addresses"
-        name="addresses">
-        </textarea>
-         <button type="submit" [disabled]="userForm.invalid">
-        Save
-      </button>
-        <button type="button" (click)="cancel()">Cancel</button>
+      <div class="form-row">
+        <label class="field-label">วันเกิด</label>
+        <div class="field-row">
+          <input class="input date-input" type="date" [(ngModel)]="newUser.birth_date" name="birth_date" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label class="field-label">อายุ</label>
+        <div class="field-row">
+          <div class="age-box">
+            <ng-container *ngIf="calculateAge !== null; else emptyAge">{{ calculateAge }}</ng-container>
+            <ng-template #emptyAge>xx</ng-template>
+            ปี
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label class="field-label">ที่อยู่</label>
+        <div class="field-row">
+          <textarea class="textarea" rows="4" [(ngModel)]="newUser.addresses" name="addresses"></textarea>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit" [disabled]="userForm.invalid">บันทึก</button>
+        <button class="btn btn-danger" type="button" (click)="cancel()">ยกเลิก</button>
+      </div>
     </form>
-    </div>
+  </div>
 </div>
