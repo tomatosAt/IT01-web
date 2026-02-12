@@ -1,0 +1,84 @@
+:root{
+  --accent: #00a3e0;
+  --accent-dark: #007db3;
+  --muted: #f6f9fb;
+  --border: #d6dce0;
+}
+
+:host{
+  display: block;
+  padding: 12px 16px;
+}
+
+.dashboard-card{
+  border-radius: 6px;
+  overflow: visible;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  position: relative;
+  max-width: 1100px;
+  margin: 25px auto;
+}
+
+.card-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 12px;
+}
+
+.header-title{
+  font-weight:600;
+}
+
+.btn-add{
+  background: #4472c4;
+  color: #fff;
+  font-weight:600;
+  border-radius: 8px;
+  padding: 8px 12px;
+  position: absolute;
+  right: 63px;
+  z-index: 20;
+  top : 10px;
+}
+
+.table-wrap{
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+}
+
+.user-table{
+  width:95%;
+  max-width: 1040px;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin: 0 auto;
+}
+
+.user-table thead th{
+  background: #00a3e0;
+  color:#000;
+  text-align:center;
+  padding:6px 10px;
+  border: 1px solid #196b91;
+  font-weight:700;
+}
+
+.user-table tbody td{
+  padding:6px 10px;
+  border: 1px solid #bfbfbf;
+  vertical-align: middle;
+  background: #fff;
+  text-align:center;
+}
+
+.user-table tbody tr:hover td{ background: #fbfdff; }
+.col-action{ width:90px; text-align:center; }
+
+.btn-view{
+  background: #4472c4;
+  color:#fff;
+  padding:6px 8px;
+  border-radius:6px;
+}
