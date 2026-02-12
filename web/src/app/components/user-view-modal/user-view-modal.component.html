@@ -1,0 +1,56 @@
+<div class="modal" *ngIf="userByID">
+ <div class="modal-content">
+      <form class="form-grid">
+      <div class="form-row">
+       <label class="field-label">ชื่อ-สกุล</label>
+        <div class="field-row">
+            <input  class="input" 
+        type="text" 
+        name="first_name_th" 
+        [(ngModel)]="userByID.first_name_th"
+        required
+      />
+         <input 
+        type="text" class="input" 
+        name="last_name_th" 
+        [(ngModel)]="userByID.last_name_th"
+        required
+      />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label class="field-label">วันเกิด</label>
+            <div class="field-row">
+              <input class="input date-input" 
+          type="date" 
+          name="birth_date" 
+          [(ngModel)]="userByID.birth_date"
+          required/>
+            </div>
+      </div>
+      
+  <div class="form-row">
+      <label class="field-label">อายุ</label> 
+       <div class="field-row">
+        <div class="age-box">
+          {{userByID.age}} ปี
+        </div>
+       </div>
+  </div>
+  <div class="form-row">
+  <label class="field-label">ที่อยู่</label>
+      <div class="field-row">
+    <textarea 
+            rows="3"
+            [(ngModel)]="userByID.addresses"
+            name="addresses">
+            </textarea>
+    </div>
+  </div>
+  <div class="form-actions">
+    <button class="btn btn-danger" type="button" (click)="cancel()">ปิด</button>
+  </div>     
+</form>
+  </div>
+</div>

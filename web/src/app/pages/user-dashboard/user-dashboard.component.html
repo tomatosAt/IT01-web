@@ -1,0 +1,45 @@
+<div class="dashboard-card">
+  <div class="card-header">
+    <button class="btn btn-add" (click)="openAddModal()">ADD</button>
+  </div>
+
+  <app-user-add-modal
+    *ngIf="isAddModalOpen"
+    (userCreated)="onUserCreated()"
+    (close)="closeModal()">
+  </app-user-add-modal>
+
+  <div class="table-wrap">
+    <table class="user-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>ชื่อ-สกุล</th>
+          <th>ที่อยู่</th>
+          <th>วันเกิด</th>
+          <th>อายุ</th>
+          <th class="col-action">Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let user of users; let i = index">
+          <td data-label="ID">{{ (currentPage - 1) * pageSize + i + 1 }}</td>
+          <td data-label="ชื่อ-สกุล">{{ user.first_name_th }} {{ user.last_name_th }}</td>
+          <td data-label="ที่อยู่">{{ user.addresses }}</td>
+          <td data-label="วันเกิด">{{ formatDate(user.birth_date)}}</td>
+          <td data-label="อายุ">{{ user.age }}</td>
+          <td class="col-action" data-label="Action">
+            <button class="btn btn-view" (click)="openViewModal(user.id)">View</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <app-user-view-modal
+    *ngIf="isViewModalOpen"
+    [userId]="selectedUserId"
+    (close)="closeModal()">
+  </app-user-view-modal>
+</div>
